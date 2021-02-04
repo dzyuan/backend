@@ -1,3 +1,14 @@
 let mongoose = require('mongoose')
 
-mongoose.connect('mongodb://localhost:27017/project')
+mongoose.connect('mongodb://localhost:27017/project' ,
+{ useNewUrlParser: true  ,
+ useUnifiedTopology: true })
+
+mongoose.connection.on('open',function(err){
+    if(err){
+        console.log('数据库连接失败',err)
+    }else{
+        console.log('数据库连接成功')
+        console.log('操作数据库成功')
+    }
+})
